@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selling Books - Worldly Quill</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Comfortaa', cursive;
+      background: #f0ece2;
+      color: #344047;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1, h2 {
+      color: #2a5d8f;
+    }
+    button, select {
+      font-family: 'Comfortaa', cursive;
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      border: none;
+      background-color: #3e78b2;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #f9d342;
+      color: #2a5d8f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Selling Books</h1>
+
+  <div>
+    <h2>Travel Book: "Wandering Wonders"</h2>
+    <p>Price: $15</p>
+
+    <!-- Add to Trolley -->
+    <button onclick="addToCart()">?? Add to Trolley</button>
+    <p id="cart"></p>
+
+    <!-- Currency Converter -->
+    <p>Convert Price:</p>
+    <select id="currency" onchange="convertCurrency()">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="JPY">JPY</option>
+      <option value="INR">INR</option>
+    </select>
+    <p id="converted"></p>
+
+    <!-- Wishlist -->
+    <button onclick="addToWishlist()">?? Add to Wishlist</button>
+    <p id="wishlist-msg"></p>
+  </div>
+
+  <p><a href="index.html">? Back to Home</a></p>
+
+  <script>
+    function addToCart() {
+      document.getElementById('cart').innerText = "?? Added to Trolley!";
+    }
+
+    const prices = {
+      USD: 15,
+      EUR: 13.5,
+      JPY: 1650,
+      INR: 1250
+    };
+
+    function convertCurrency() {
+      const selected = document.getElementById("currency").value;
+      const amount = prices[selected];
+      document.getElementById("converted").innerText = `~ ${amount} ${selected}`;
+    }
+
+    function addToWishlist() {
+      document.getElementById('wishlist-msg').innerText = "?? Added to Wishlist!";
+    }
+  </script>
+</body>
+</html>
