@@ -8,7 +8,6 @@
   <script>
     function handleCredentialResponse(response) {
       console.log("ID Token: " + response.credential);
-      // Here you can send the token to your server or show a welcome message
       document.getElementById("response").innerText = "Signed in successfully!";
     }
 
@@ -19,7 +18,7 @@
       });
       google.accounts.id.renderButton(
         document.getElementById("g_id_signin"),
-        { theme: "outline", size: "large" } // Customize the button
+        { theme: "outline", size: "large" }
       );
     };
   </script>
@@ -39,10 +38,23 @@
       font-size: 1.1rem;
       color: green;
     }
+    a.home-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-family: 'Comfortaa', cursive;
+      text-decoration: none;
+      font-weight: bold;
+      color: #2a5d8f;
+    }
+    a.home-link:hover {
+      text-decoration: underline;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <a href="index.html" class="home-link">← Home</a>
   <h1>Sign In to Worldly Quill</h1>
   <div id="g_id_signin"></div>
   <div id="response"></div>
