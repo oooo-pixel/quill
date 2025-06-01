@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sign In</title>
-  <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In - Worldly Quill</title>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script>
     function handleCredentialResponse(response) {
-      const info = JSON.stringify(response.credential);
-      document.getElementById("user").innerText = "Signed in!";
+      console.log("ID Token: " + response.credential);
+      // Here you can send the token to your server or show a welcome message
+      document.getElementById("response").innerText = "Signed in successfully!";
     }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "989913909696-nuanfup1nd8qo0t20u557t8iabbo9u3l.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("g_id_signin"),
+        { theme: "outline", size: "large" } // Customize the button
+      );
+    };
   </script>
+  <style>
+    body {
+      font-family: 'Comfortaa', cursive;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f0ece2;
+      color: #344047;
+    }
+    h1 {
+      color: #2a5d8f;
+    }
+    #response {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: green;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>Sign In with Google</h1>
-  <div id="g_id_onload"
-       data-client_id="YOUR_GOOGLE_CLIENT_ID"
-       data-callback="handleCredentialResponse">
-  </div>
-  <div class="g_id_signin"
-       data-type="standard"></div>
-  <p id="user"></p>
-  <p><a href="index.html">? Back to Home</a></p>
+  <h1>Sign In to Worldly Quill</h1>
+  <div id="g_id_signin"></div>
+  <div id="response"></div>
 </body>
 </html>
+
